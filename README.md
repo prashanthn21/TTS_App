@@ -11,6 +11,48 @@ This is a **Text-to-Speech (TTS) app** built with a **MERN stack** (MongoDB, Exp
 
 ---
 
+📂 tts-app/
+├── 📂 backend/                # Express.js Server
+│   ├── 📂 config/             # Configuration files
+│   │   ├── supabase.js        # Supabase client setup
+│   │   ├── dotenv.js          # Environment variables setup
+│   ├── 📂 routes/             # API Routes
+│   │   ├── ttsRoutes.js       # TTS conversion & fetching
+│   ├── 📂 controllers/        # Route Logic
+│   │   ├── ttsController.js   # Handles conversion & storage
+│   ├── 📂 middleware/         # Middleware functions
+│   │   ├── cors.js            # CORS config
+│   ├── 📂 utils/              # Helper functions
+│   │   ├── logger.js          # Logging utility
+│   ├── .env                   # Environment variables (gitignore)
+│   ├── server.js              # Main server file
+│   ├── package.json           # Backend dependencies
+│   ├── README.md              # Backend-specific documentation
+│
+├── 📂 frontend/               # React.js Frontend
+│   ├── 📂 src/
+│   │   ├── 📂 components/      # Reusable UI components
+│   │   │   ├── AudioPlayer.js  # Component for playing audio
+│   │   ├── 📂 pages/           # App pages
+│   │   │   ├── Home.js         # Main page for TTS conversion
+│   │   ├── 📂 styles/          # Tailwind CSS styles
+│   │   ├── App.js              # Main React app
+│   │   ├── index.js            # Entry point
+│   ├── public/                 # Static assets
+│   ├── .env                    # Frontend environment variables
+│   ├── package.json            # Frontend dependencies
+│   ├── tailwind.config.js       # Tailwind CSS config
+│   ├── README.md                # Frontend-specific documentation
+│
+├── 📂 deployment/               # Deployment-related files
+│   ├── vercel.json              # Vercel deployment config
+│   ├── Dockerfile               # (Optional) Docker setup
+│   ├── postbuild.sh             # (Optional) Post-deployment script
+│
+├── .gitignore                   # Ignore node_modules, env files, etc.
+├── README.md                     # Main project documentation
+
+
 ## Tech Stack
 - **Frontend**: React, Tailwind CSS, Axios
 - **Backend**: Node.js, Express.js, Supabase SDK, ElevenLabs API
