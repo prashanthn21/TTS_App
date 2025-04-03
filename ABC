@@ -1,0 +1,52 @@
+**# Key Learnings from the Text-to-Speech (TTS) Application Project**
+
+## **1. Project Overview**
+The Text-to-Speech (TTS) application converts user-inputted text into speech using the **ElevenLabs API** and stores the generated audio in **Supabase Storage**. The frontend, built with **React and Tailwind CSS**, allows users to input text, generate speech, and play back stored audio files. The backend is powered by **Express.js** and deployed on **Vercel**.
+
+## **2. Tech Stack Used**
+- **Frontend:** React.js, Tailwind CSS, Axios
+- **Backend:** Node.js, Express.js, Supabase SDK
+- **Database & Storage:** Supabase (PostgreSQL & Storage Buckets)
+- **API Integration:** ElevenLabs API (Text-to-Speech Conversion)
+- **Deployment:** Vercel (Frontend & Backend), GitHub (Version Control)
+
+## **3. Key Challenges & Solutions**
+### **Challenge 1: API Integration Issues**
+- **Issue:** Initial errors (404 & authentication failures) while connecting to ElevenLabs API.
+- **Solution:** Ensured correct API endpoint usage, included `xi-api-key` in headers, and verified response handling.
+
+### **Challenge 2: Handling File System Limitations on Vercel**
+- **Issue:** Vercel’s read-only file system prevented temporary file storage.
+- **Solution:** Instead of saving audio files locally, we directly streamed responses and uploaded them to Supabase Storage.
+
+### **Challenge 3: CORS Issues Between Frontend & Backend**
+- **Issue:** Cross-origin requests were blocked when frontend (React) tried accessing backend APIs.
+- **Solution:** Implemented `cors` middleware in Express with `app.use(cors({ origin: "*" }));` to allow all domains.
+
+### **Challenge 4: Asynchronous Operations & Error Handling**
+- **Issue:** API calls, file uploads, and database inserts needed proper error handling.
+- **Solution:** Used `try-catch` blocks, detailed logs, and UI alerts to handle API failures gracefully.
+
+## **4. Best Practices Implemented**
+- **Separation of Concerns:** Kept frontend and backend code modular.
+- **Logging & Debugging:** Added console logs (`📨`, `✅`, `❌`) for API calls, database interactions, and errors.
+- **Code Readability & Comments:** Used clear variable names, comments, and modular functions.
+- **Efficient Data Fetching:** Implemented `useEffect` to fetch stored audio files only when needed.
+- **Optimized Deployment:** Used **Vercel** for serverless deployment, ensuring auto-scaling and fast response times.
+
+## **5. Deployment Insights**
+- **Frontend:** Deployed via Vercel (`vercel deploy`).
+- **Backend:** Used **Vercel’s serverless functions**, removing the need for manual server management.
+- **Database & Storage:** Supabase provided a free, scalable PostgreSQL solution with easy API integration.
+
+## **6. Future Improvements**
+- **User Authentication:** Implementing Supabase Auth for user-based storage of audio files.
+- **Speech Customization:** Allowing users to choose different voices and accents via ElevenLabs settings.
+- **Performance Optimization:** Caching API responses and reducing re-fetching of stored audio files.
+- **Enhanced UI/UX:** Adding animations, better loading states, and voice previews before conversion.
+
+---
+
+### **Conclusion**
+This project provided hands-on experience in API integration, cloud storage, serverless deployment, and building a scalable full-stack application. The use of Supabase and ElevenLabs API streamlined the development process, while deploying on Vercel enabled fast and efficient performance.
+
